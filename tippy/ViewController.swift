@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
     
     @IBOutlet weak var decimalButton: UIButton!
+    @IBOutlet weak var billCurrencySymbol: UILabel!
     
     // Stack container views
     @IBOutlet weak var perPersonWrapperView: UIView!
@@ -39,7 +40,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var splitHighlightConstraint: NSLayoutConstraint!
     @IBOutlet weak var billHighlightConstraint: NSLayoutConstraint!
     
-    
+    var localCurrencySymbol = "$"
     var isFirstTimeTyping = true
     var activeLabel: UILabel!
     var activeConstraint: NSLayoutConstraint?
@@ -47,6 +48,7 @@ class ViewController: UIViewController {
     var defaultVal = 0
     var tipPercentage = 0.00
     var total = 0.00
+    
     
     let messenger = Messenger()
     let customColors = CustomColors()
@@ -63,8 +65,7 @@ class ViewController: UIViewController {
         drawBorders()
         
         selectDefault()
-        // this is where your joureny is to begin
-        // remove all traces of activeHighlight
+        setLocalCurrency()
     }
     
     override func didReceiveMemoryWarning() {
@@ -73,6 +74,15 @@ class ViewController: UIViewController {
 
     @IBAction func onTap(_ sender: AnyObject) {
         view.endEditing(true)
+    }
+    
+    func setLocalCurrency() {
+        var locale = Locale.current
+        if let symbol = locale.currencySymbol {
+            localCurrencySymbol = symbol
+            billCurrencySymbol.text = "\(symbol)"
+            perPersonAmountLabel.text = String(format: "\(localCurrencySymbol)%.2f", 0)
+        }
     }
 
     @IBAction func calculateTip(_ sender: UIButton) {
@@ -112,7 +122,7 @@ class ViewController: UIViewController {
         let perPersonTotal = (total)/numOfWays
         
         summaryTotalLabel.text = String(format: "%.2f", total)
-        perPersonAmountLabel.text = String(format: "$%.2f", perPersonTotal)
+        perPersonAmountLabel.text = String(format: "\(localCurrencySymbol)%.2f", perPersonTotal)
     }
     
     func selectInput(sender: UITapGestureRecognizer) {

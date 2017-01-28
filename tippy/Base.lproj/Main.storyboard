@@ -67,7 +67,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r8N-j4-EjQ">
                                         <rect key="frame" x="0.0" y="0.0" width="383" height="83"/>
                                         <subviews>
-                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6D1-SE-rZF">
+                                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6D1-SE-rZF">
                                                 <rect key="frame" x="0.0" y="0.0" width="297" height="83"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -482,6 +482,7 @@
                         <outlet property="billAmountLabel" destination="jzk-4Z-qVI" id="K9u-cN-EBg"/>
                         <outlet property="billAmountTitleLabel" destination="5O3-2X-aot" id="cDW-jO-rJw"/>
                         <outlet property="billAmountWrapperView" destination="7qa-bm-7bJ" id="p7c-Tf-DWH"/>
+                        <outlet property="billCurrencySymbol" destination="nBb-Cd-A2g" id="ieb-bK-0O7"/>
                         <outlet property="billHighlightConstraint" destination="9c5-LQ-g48" id="Qgd-hb-gBa"/>
                         <outlet property="customTipLabel" destination="Zse-4u-rnc" id="JzB-sg-ITH"/>
                         <outlet property="customTipWrapperView" destination="b2Z-07-AS9" id="J1e-e1-kNp"/>

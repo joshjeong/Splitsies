@@ -21,8 +21,12 @@ class Messenger: NSObject, MFMessageComposeViewControllerDelegate {
     
     func configuredMessageComposeViewController(amount: String) -> MFMessageComposeViewController {
         let messageComposeVC = MFMessageComposeViewController()
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, yyyy"
+        let dateStr = formatter.string(from: date)
         messageComposeVC.messageComposeDelegate = self
-        messageComposeVC.body = "Hi! You owe me \(amount)!!!!"
+        messageComposeVC.body = "(\(dateStr)) Requesting \(amount) for: "
         return messageComposeVC
     }
 }
