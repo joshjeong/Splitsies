@@ -95,6 +95,11 @@ class ViewController: UIViewController {
         }
         customTipLabel.backgroundColor = customColors.salmon().withAlphaComponent(0.1)
         customTipLabel.textColor = customColors.salmon()
+        if let customTip = customTipLabel.text {
+            if customTip == "0" {
+                customTipLabel.text = "+"
+            }
+        }
     }
     
 
@@ -151,8 +156,10 @@ class ViewController: UIViewController {
         activeLabel.backgroundColor = customColors.salmon()
         activeLabel.textColor = UIColor.white
         if let customTip = customTipLabel.text {
-            tipPercentage = Double(customTip)!/100.00
-            calculate()
+            if customTip != "+" {
+                tipPercentage = Double(customTip)!/100.00
+                calculate()
+            }
         }
         resetHighlightLeadingContraint(selectedConstraint: tipHighlightConstraint)
         moveConstraintRight(selectedConstraint: tipHighlightConstraint)
