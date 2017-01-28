@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var customTipLabel: UILabel!
     @IBOutlet weak var tipWrapperView: UIView!
     @IBOutlet weak var summaryTotalLabel: UILabel!
-    @IBOutlet weak var summarySplitLabel: UILabel!
+
     
     @IBOutlet weak var tipHighlightConstraint: NSLayoutConstraint!
     @IBOutlet weak var splitHighlightConstraint: NSLayoutConstraint!
@@ -35,6 +35,7 @@ class ViewController: UIViewController {
     var activeConstraint: NSLayoutConstraint?
     var defaultVal = 0
     var tipPercentage = 0.00
+    var total = 0.00
     
     let messenger = Messenger()
     let customColors = CustomColors()
@@ -74,8 +75,10 @@ class ViewController: UIViewController {
         
         let tip = bill * tipPercentage
         let numOfWays = Double(numOfWaysLabel.text!) ?? 1
-        let perPersonTotal = (bill + tip)/numOfWays
+        total = bill + tip
+        let perPersonTotal = (total)/numOfWays
         
+        summaryTotalLabel.text = String(format: "%.2f", total)
         perPersonAmountLabel.text = String(format: "$%.2f", perPersonTotal)
     }
     
@@ -210,11 +213,15 @@ class ViewController: UIViewController {
                 present(messageComposeVC, animated: true, completion: nil)
             }
         } else {
-            let alertController = UIAlertController(title: "Error", message: "This device is unable to send text messages", preferredStyle: .alert)
-            let OKAction = UIAlertAction(title: "OK", style: .default)
-            alertController.addAction(OKAction)
-            present(alertController, animated: true, completion: nil)
+            presentAlertController(title: "Oops!", message: "This device is unable to send text messages 😣")
         }
+    }
+    
+    func presentAlertController(title: String, message: String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let OKAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(OKAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     func styleNavBar() {
