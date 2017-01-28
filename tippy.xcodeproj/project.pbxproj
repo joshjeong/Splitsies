@@ -11,7 +11,6 @@
 		761140FB1DEFEC0E00DE2BDB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 761140F91DEFEC0E00DE2BDB /* Main.storyboard */; };
 		761140FD1DEFEC0E00DE2BDB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761140FC1DEFEC0E00DE2BDB /* Assets.xcassets */; };
 		761141001DEFEC0E00DE2BDB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 761140FE1DEFEC0E00DE2BDB /* LaunchScreen.storyboard */; };
-		7611410A1DF689DB00DE2BDB /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761141091DF689DB00DE2BDB /* SettingsViewController.swift */; };
 		7623979F1E1F644600CCE9F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7623979E1E1F644600CCE9F0 /* ViewController.swift */; };
 		764A3E331E3C6D1A00C570CA /* CalculatorRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764A3E321E3C6D1A00C570CA /* CalculatorRow.swift */; };
 		769891611E35945E000D2218 /* Messenger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 769891601E35945E000D2218 /* Messenger.swift */; };
@@ -27,7 +26,6 @@
 		761140FC1DEFEC0E00DE2BDB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		761140FF1DEFEC0E00DE2BDB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		761141011DEFEC0E00DE2BDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		761141091DF689DB00DE2BDB /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7623979E1E1F644600CCE9F0 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		764A3E321E3C6D1A00C570CA /* CalculatorRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalculatorRow.swift; sourceTree = "<group>"; };
 		769891601E35945E000D2218 /* Messenger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Messenger.swift; sourceTree = "<group>"; };
@@ -72,7 +70,6 @@
 				761140FC1DEFEC0E00DE2BDB /* Assets.xcassets */,
 				761140FE1DEFEC0E00DE2BDB /* LaunchScreen.storyboard */,
 				761141011DEFEC0E00DE2BDB /* Info.plist */,
-				761141091DF689DB00DE2BDB /* SettingsViewController.swift */,
 				769891601E35945E000D2218 /* Messenger.swift */,
 				769891631E372077000D2218 /* ColorStringExtension.swift */,
 				769891661E387780000D2218 /* CustomColors.swift */,
@@ -161,7 +158,6 @@
 				769891691E387A96000D2218 /* RoundCornerRadius.swift in Sources */,
 				769891641E372077000D2218 /* ColorStringExtension.swift in Sources */,
 				769891611E35945E000D2218 /* Messenger.swift in Sources */,
-				7611410A1DF689DB00DE2BDB /* SettingsViewController.swift in Sources */,
 				769891671E387780000D2218 /* CustomColors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -59,13 +59,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         bindTapGestures()
         styleNavBar()
+        setLocalCurrency()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         drawBorders()
-        
         selectDefault()
-        setLocalCurrency()
     }
     
     override func didReceiveMemoryWarning() {
@@ -81,7 +80,7 @@ class ViewController: UIViewController {
         if let symbol = locale.currencySymbol {
             localCurrencySymbol = symbol
             billCurrencySymbol.text = "\(symbol)"
-            perPersonAmountLabel.text = String(format: "\(localCurrencySymbol)%.2f", 0)
+            calculate()
         }
     }
 
@@ -263,7 +262,7 @@ class ViewController: UIViewController {
         createTapGesture(view: customTipWrapperView)
     }
     
-    @IBAction func sendTextMessage(_ sender: UIBarButtonItem) {
+    @IBAction func sendTextMessage(_ sender: UIButton) {
         if messenger.canSendText() {
             if let amountPerPerson = perPersonAmountLabel.text {
                 let messageComposeVC = messenger.configuredMessageComposeViewController(amount: amountPerPerson)
