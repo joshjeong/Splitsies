@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import AudioToolbox
 class ViewController: UIViewController {
 
     // Values that are updated
@@ -17,10 +17,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var customTipLabel: UILabel!
     @IBOutlet weak var summaryTotalLabel: UILabel!
     
-    @IBOutlet weak var billAmountTitleLabel: UILabel!
-    @IBOutlet weak var splitTitleLabel: UILabel!
-    @IBOutlet weak var tipTitleLabel: UILabel!
-    
+    @IBOutlet weak var billLabelView: UIView!
+    @IBOutlet weak var tipLabelView: UIView!
+    @IBOutlet weak var splitLabelView: UIView!
     
     @IBOutlet weak var decimalButton: UIButton!
     @IBOutlet weak var billCurrencySymbol: UILabel!
@@ -40,11 +39,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var splitHighlightConstraint: NSLayoutConstraint!
     @IBOutlet weak var billHighlightConstraint: NSLayoutConstraint!
     
-    var localCurrencySymbol = "$"
-    var isFirstTimeTyping = true
     var activeLabel: UILabel!
     var activeConstraint: NSLayoutConstraint?
-    var activeTitleLabel: UILabel?
+    var activeLabelView: UIView?
+    var localCurrencySymbol = "$"
+    var isFirstTimeTyping = true
     var defaultVal = 0
     var tipPercentage = 0.00
     var total = 0.00
@@ -64,7 +63,9 @@ class ViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         drawBorders()
-        selectDefault()
+        activeLabel = billAmountLabel
+        activeLabelView = billLabelView
+        activeConstraint = billHighlightConstraint
     }
     
     override func didReceiveMemoryWarning() {
@@ -90,8 +91,8 @@ class ViewController: UIViewController {
         resetButtonStyling()
         resetHighlightLeadingContraint(selectedConstraint: tipHighlightConstraint)
         moveConstraintRight(selectedConstraint: tipHighlightConstraint)
-        resetLabelView(selectedTitleLabel: tipTitleLabel)
-        moveLabelTitleRight(selectedTitleLabel: tipTitleLabel)
+        resetLabelView(selectedLabelView: tipLabelView)
+        moveLabelViewRight(selectedLabelView: tipLabelView)
         sender.backgroundColor = customColors.salmon()
         sender.setTitleColor(UIColor.white, for: .normal)
         calculate()
@@ -144,8 +145,8 @@ class ViewController: UIViewController {
         activeLabel = billAmountLabel
         resetHighlightLeadingContraint(selectedConstraint: billHighlightConstraint)
         moveConstraintRight(selectedConstraint: billHighlightConstraint)
-        resetLabelView(selectedTitleLabel: billAmountTitleLabel)
-        moveLabelTitleRight(selectedTitleLabel: billAmountTitleLabel)
+        resetLabelView(selectedLabelView: billLabelView)
+        moveLabelViewRight(selectedLabelView: billLabelView)
     }
     
     func didSelectSplitView() {
@@ -154,8 +155,8 @@ class ViewController: UIViewController {
         defaultVal = 1
         resetHighlightLeadingContraint(selectedConstraint: splitHighlightConstraint)
         moveConstraintRight(selectedConstraint: splitHighlightConstraint)
-        resetLabelView(selectedTitleLabel: splitTitleLabel)
-        moveLabelTitleRight(selectedTitleLabel: splitTitleLabel)
+        resetLabelView(selectedLabelView: splitLabelView)
+        moveLabelViewRight(selectedLabelView: splitLabelView)
     }
     
     func didSelectTipView() {
@@ -172,8 +173,8 @@ class ViewController: UIViewController {
         }
         resetHighlightLeadingContraint(selectedConstraint: tipHighlightConstraint)
         moveConstraintRight(selectedConstraint: tipHighlightConstraint)
-        resetLabelView(selectedTitleLabel: tipTitleLabel)
-        moveLabelTitleRight(selectedTitleLabel: tipTitleLabel)
+        resetLabelView(selectedLabelView: tipLabelView)
+        moveLabelViewRight(selectedLabelView: tipLabelView)
     }
     
     
@@ -186,7 +187,7 @@ class ViewController: UIViewController {
     }
     
     func isMaximumFloatDigits(str: String) -> Bool {
-        if activeTitleLabel == customTipLabel && Int(str)! > 100 { return false }
+        if activeLabelView == customTipLabel && Int(str)! > 100 { return false }
         
         
         if let range = str.range(of: ".") {
@@ -206,6 +207,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func performOperation(_ sender: UIButton) {
+        AudioServicesPlaySystemSound(1104)
         if let operation = sender.titleLabel {
             if let currentVal = activeLabel.text {
                 var newVal = ""
@@ -233,6 +235,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func tapDelete(_ sender: Any) {
+        AudioServicesPlaySystemSound(1155)
         if let currentVal = activeLabel.text {
             var newVal = ""
             
@@ -301,8 +304,7 @@ class ViewController: UIViewController {
     
     func selectDefault() {
         moveConstraintRight(selectedConstraint: billHighlightConstraint)
-        activeTitleLabel = billAmountTitleLabel
-        moveLabelTitleRight(selectedTitleLabel: billAmountTitleLabel)
+        moveLabelViewRight(selectedLabelView: billLabelView)
     }
     
     func moveConstraintRight(selectedConstraint: NSLayoutConstraint) {
@@ -332,36 +334,26 @@ class ViewController: UIViewController {
         }
     }
     
-    func moveLabelTitleRight(selectedTitleLabel: UILabel) {
-        if selectedTitleLabel == activeTitleLabel {
+    func moveLabelViewRight(selectedLabelView: UIView) {
+        if selectedLabelView == activeLabelView {
             return
         }
         UILabel.animate(withDuration: 0.5, animations: {
-            selectedTitleLabel.center.x += 10
+            selectedLabelView.center.x += 10
         })
-        activeTitleLabel = selectedTitleLabel
+        activeLabelView = selectedLabelView
     }
     
-    func resetLabelView(selectedTitleLabel: UILabel) {
-        if selectedTitleLabel == activeTitleLabel {
+    func resetLabelView(selectedLabelView: UIView) {
+        if selectedLabelView == activeLabelView {
             return
         }
-        moveTitleLabelLeft(selectedTitleLabel: activeTitleLabel!)
+        moveLabelViewLeft(selectedLabelView: activeLabelView!)
     }
     
-    func moveTitleLabelLeft(selectedTitleLabel: UILabel) {
-        UILabel.animate(withDuration: 0.5, animations: {
-            selectedTitleLabel.center.x -= 10
+    func moveLabelViewLeft(selectedLabelView: UIView) {
+        UIView.animate(withDuration: 0.5, animations: {
+            selectedLabelView.center.x -= 10
         })
     }
 }
-
-
-
-//var billRow: CalculatorRow?
-//var splitRow: CalculatorRow?
-//var tipRow: CalculatorRow?
-//billRow = CalculatorRow(inputLabel: billAmountLabel, highlightLeadingConstraint: billHighlightConstraint, titleLabel: billAmountTitleLabel)
-//splitRow = CalculatorRow(inputLabel: splitLabel, highlightLeadingConstraint: splitHighlightConstraint, titleLabel: splitTitleLabel)
-//tipRow = CalculatorRow(inputLabel: customTipLabel, highlightLeadingConstraint: tipHighlightConstraint, titleLabel: tipTitleLabel)
-//}
