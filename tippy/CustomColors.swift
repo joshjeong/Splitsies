@@ -11,7 +11,7 @@ import UIKit
 class CustomColors: UIColor {
     
     func darkBlue() -> UIColor {
-            return "#0096FF".hexColor
+            return "#5d9efb".hexColor
     }
     
     func lightBlue() -> UIColor {
