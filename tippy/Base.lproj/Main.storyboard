@@ -39,9 +39,9 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/ PERSON" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AxA-AT-6Jc">
-                                                <rect key="frame" x="290" y="53" width="73" height="22"/>
+                                                <rect key="frame" x="289.5" y="53" width="73.5" height="22"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="73.5" id="Oot-Xb-55Q"/>
+                                                    <constraint firstAttribute="width" constant="73.5" id="kn8-4a-mF6"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -51,10 +51,10 @@
                                         <color key="backgroundColor" red="0.0" green="0.58823529411764708" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="bottom" secondItem="AxA-AT-6Jc" secondAttribute="bottom" constant="15" id="1zP-b5-Ev9"/>
-                                            <constraint firstItem="AxA-AT-6Jc" firstAttribute="leading" secondItem="6D1-SE-rZF" secondAttribute="trailing" constant="5" id="24C-GA-RuP"/>
                                             <constraint firstAttribute="trailing" secondItem="AxA-AT-6Jc" secondAttribute="trailing" constant="20" id="Y6d-xe-JhG"/>
                                             <constraint firstItem="6D1-SE-rZF" firstAttribute="leading" secondItem="r8N-j4-EjQ" secondAttribute="leading" id="rae-eH-Dbb"/>
                                             <constraint firstAttribute="bottom" secondItem="6D1-SE-rZF" secondAttribute="bottom" constant="13" id="uFF-Cb-vP0"/>
+                                            <constraint firstItem="AxA-AT-6Jc" firstAttribute="leading" secondItem="6D1-SE-rZF" secondAttribute="trailing" constant="5" id="yhv-bN-fWs"/>
                                         </constraints>
                                     </view>
                                     <view tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7qa-bm-7bJ">
