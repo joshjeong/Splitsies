@@ -88,8 +88,11 @@ class ViewController: UIViewController {
     @IBAction func calculateTip(_ sender: UIButton) {
         let tipPercentageDefaults = [0.18, 0.2, 0.25]
         tipPercentage = tipPercentageDefaults[sender.tag]
+        isFirstTimeTyping = true
+        defaultVal = 0
         resetButtonStyling()
         resetHighlightLeadingContraint(selectedConstraint: tipHighlightConstraint)
+        activeLabel = customTipLabel
         moveConstraintRight(selectedConstraint: tipHighlightConstraint)
         resetLabelView(selectedLabelView: tipLabelView)
         moveLabelViewRight(selectedLabelView: tipLabelView)
@@ -177,6 +180,11 @@ class ViewController: UIViewController {
         moveLabelViewRight(selectedLabelView: tipLabelView)
     }
     
+    func toggleOnCustomTipButton() {
+        resetButtonStyling()
+        customTipLabel.backgroundColor = customColors.salmon()
+        customTipLabel.textColor = UIColor.white
+    }
     
     func toggleDecimalButton(str: String) {
         if activeLabel == splitLabel || activeLabel == customTipLabel {
@@ -223,6 +231,7 @@ class ViewController: UIViewController {
                 
                 if activeLabel == customTipLabel {
                     calculateCustomTip(val: newVal)
+                    toggleOnCustomTipButton()
                 }
                 
                 toggleDecimalButton(str: newVal)
@@ -249,6 +258,11 @@ class ViewController: UIViewController {
             
             toggleDecimalButton(str: newVal)
             activeLabel.text = "\(newVal)"
+            
+            if activeLabel == customTipLabel {
+                calculateCustomTip(val: newVal)
+            }
+            
             calculate()
         }
     }

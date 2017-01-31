@@ -70,7 +70,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="receipt" translatesAutoresizingMaskIntoConstraints="NO" id="bSO-AJ-mMy">
-                                                        <rect key="frame" x="0.0" y="30" width="20" height="20"/>
+                                                        <rect key="frame" x="0.0" y="30.5" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="KyX-hS-PHk"/>
                                                             <constraint firstAttribute="height" constant="20" id="LRJ-dT-Ber"/>
@@ -197,7 +197,7 @@
                                                 <rect key="frame" x="20" y="5" width="55.5" height="80"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tip" translatesAutoresizingMaskIntoConstraints="NO" id="g0Q-c4-HIH">
-                                                        <rect key="frame" x="0.0" y="29.5" width="20" height="20"/>
+                                                        <rect key="frame" x="0.0" y="30" width="20" height="20"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="20" id="OR3-bl-bjN"/>
                                                             <constraint firstAttribute="height" constant="20" id="p09-9K-voA"/>
@@ -262,7 +262,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="people" translatesAutoresizingMaskIntoConstraints="NO" id="WvE-sM-jLq">
-                                                        <rect key="frame" x="0.0" y="30.5" width="22" height="18"/>
+                                                        <rect key="frame" x="0.0" y="31" width="22" height="18"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" constant="22" id="Gcp-g9-lBb"/>
                                                             <constraint firstAttribute="height" constant="18" id="Gi1-sa-XYW"/>
@@ -510,24 +510,32 @@
                                         </subviews>
                                     </stackView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hEH-o5-Ztp">
-                                        <rect key="frame" x="351" y="17" width="16" height="16"/>
+                                        <rect key="frame" x="323" y="-5" width="60" height="60"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="16" id="3XU-9s-V3v"/>
+                                            <constraint firstAttribute="width" constant="60" id="3XU-9s-V3v"/>
                                             <constraint firstAttribute="width" secondItem="hEH-o5-Ztp" secondAttribute="height" multiplier="1:1" id="wgP-Jj-WeH"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="share"/>
                                         <connections>
                                             <action selector="sendTextMessage:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YSU-nS-E43"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="share" translatesAutoresizingMaskIntoConstraints="NO" id="LWf-bD-kO7">
+                                        <rect key="frame" x="351" y="16" width="16" height="16"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="16" id="JaD-kq-2w9"/>
+                                            <constraint firstAttribute="height" constant="16" id="b7v-58-TCi"/>
+                                        </constraints>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.58823529409999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="1yQ-Nb-bWT" firstAttribute="centerY" secondItem="jJh-Vu-qXa" secondAttribute="centerY" id="9RB-XP-DNA"/>
+                                    <constraint firstItem="LWf-bD-kO7" firstAttribute="top" secondItem="jJh-Vu-qXa" secondAttribute="top" constant="16" id="KDv-3w-4Sy"/>
                                     <constraint firstItem="1yQ-Nb-bWT" firstAttribute="leading" secondItem="jJh-Vu-qXa" secondAttribute="leading" constant="20" id="ZW4-fT-P0A"/>
                                     <constraint firstItem="hEH-o5-Ztp" firstAttribute="centerY" secondItem="jJh-Vu-qXa" secondAttribute="centerY" id="bFw-8l-qBK"/>
-                                    <constraint firstAttribute="trailing" secondItem="hEH-o5-Ztp" secondAttribute="trailing" constant="16" id="emw-ts-Omf"/>
+                                    <constraint firstAttribute="trailing" secondItem="hEH-o5-Ztp" secondAttribute="trailing" id="emw-ts-Omf"/>
                                     <constraint firstAttribute="height" constant="50" id="jxf-3J-YKA"/>
+                                    <constraint firstAttribute="trailing" secondItem="LWf-bD-kO7" secondAttribute="trailing" constant="16" id="rKh-OA-4TP"/>
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="delete" translatesAutoresizingMaskIntoConstraints="NO" id="qja-2q-jHA">
@@ -606,7 +614,7 @@
         <image name="delete" width="23" height="17"/>
         <image name="people" width="22" height="16"/>
         <image name="receipt" width="16" height="16"/>
-        <image name="share" width="8" height="8"/>
+        <image name="share" width="16" height="16"/>
         <image name="tip" width="18" height="18"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
