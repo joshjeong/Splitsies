@@ -15,7 +15,7 @@ class CustomColors: UIColor {
     }
     
     func lightBlue() -> UIColor {
-        return "#4590FA".hexColor
+        return "#0096FF".hexColor
     }
     
     func turquoise() -> UIColor {

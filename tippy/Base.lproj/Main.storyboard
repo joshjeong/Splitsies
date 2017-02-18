@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11760" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11755"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -162,7 +162,7 @@
                                                         <rect key="frame" x="52" y="0.0" width="42" height="41.5"/>
                                                         <color key="backgroundColor" red="0.99215686270000003" green="0.4431372549" blue="0.37647058820000001" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                                        <state key="normal" title="18">
+                                                        <state key="normal" title="15">
                                                             <color key="titleColor" red="0.99215686270000003" green="0.4431372549" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
@@ -173,7 +173,7 @@
                                                         <rect key="frame" x="104" y="0.0" width="41.5" height="41.5"/>
                                                         <color key="backgroundColor" red="0.99215686270000003" green="0.4431372549" blue="0.37647058820000001" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                                        <state key="normal" title="20">
+                                                        <state key="normal" title="18">
                                                             <color key="titleColor" red="0.99215686270000003" green="0.4431372549" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
@@ -184,7 +184,7 @@
                                                         <rect key="frame" x="155.5" y="0.0" width="42" height="41.5"/>
                                                         <color key="backgroundColor" red="0.99215686270000003" green="0.4431372549" blue="0.37647058820000001" alpha="0.10000000000000001" colorSpace="calibratedRGB"/>
                                                         <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="22"/>
-                                                        <state key="normal" title="25">
+                                                        <state key="normal" title="20">
                                                             <color key="titleColor" red="0.99215686270000003" green="0.4431372549" blue="0.37647058820000001" alpha="1" colorSpace="calibratedRGB"/>
                                                         </state>
                                                         <connections>
@@ -483,22 +483,40 @@
                                 <rect key="frame" x="-4" y="20" width="383" height="50"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1yQ-Nb-bWT">
-                                        <rect key="frame" x="20" y="14" width="110" height="22"/>
+                                        <rect key="frame" x="20" y="14" width="102.5" height="22"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="sFB-8p-tTv">
-                                                <rect key="frame" x="0.0" y="0.0" width="110" height="22"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="102.5" height="22"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nxi-Vp-2gP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="110" height="22"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="102.5" height="22"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BILL + TIP = $" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJv-1i-N3k">
-                                                                <rect key="frame" x="0.0" y="0.0" width="101" height="22"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BILL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ss9-jS-X6H">
+                                                                <rect key="frame" x="0.0" y="0.0" width="30.5" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" + " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kJv-1i-N3k">
+                                                                <rect key="frame" x="30.5" y="0.0" width="20" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Ff-1q-YKh">
+                                                                <rect key="frame" x="50.5" y="0.0" width="23" height="22"/>
+                                                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" = " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wqZ-6J-DaV">
+                                                                <rect key="frame" x="73.5" y="0.0" width="20" height="22"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9M8-0Y-UjT">
-                                                                <rect key="frame" x="101" y="0.0" width="9" height="22"/>
+                                                                <rect key="frame" x="93.5" y="0.0" width="9" height="22"/>
                                                                 <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
@@ -582,6 +600,7 @@
                         <outlet property="billCurrencySymbol" destination="nBb-Cd-A2g" id="ieb-bK-0O7"/>
                         <outlet property="billHighlightConstraint" destination="9c5-LQ-g48" id="Qgd-hb-gBa"/>
                         <outlet property="billLabelView" destination="tUk-Is-1oU" id="rsL-vb-onV"/>
+                        <outlet property="billSummaryLabel" destination="Ss9-jS-X6H" id="aLI-FP-hmz"/>
                         <outlet property="customTipLabel" destination="Zse-4u-rnc" id="JzB-sg-ITH"/>
                         <outlet property="customTipWrapperView" destination="b2Z-07-AS9" id="J1e-e1-kNp"/>
                         <outlet property="decimalButton" destination="ZN4-xO-pZ1" id="uSV-rv-AmD"/>
@@ -594,6 +613,7 @@
                         <outlet property="summaryTotalLabel" destination="9M8-0Y-UjT" id="3bf-6W-HQ8"/>
                         <outlet property="tipHighlightConstraint" destination="hoQ-GY-sKO" id="9es-Dd-3dr"/>
                         <outlet property="tipLabelView" destination="M1f-4u-EcA" id="Q4z-eq-jnf"/>
+                        <outlet property="tipSummaryLabel" destination="5Ff-1q-YKh" id="PZW-xR-gvz"/>
                         <outlet property="tipWrapperView" destination="pFL-Uu-JKy" id="3wQ-1e-5Aj"/>
                         <outletCollection property="tipButtons" destination="Nn0-hz-oqU" collectionClass="NSMutableArray" id="UGC-bp-B5F"/>
                         <outletCollection property="tipButtons" destination="g3M-7M-FcU" collectionClass="NSMutableArray" id="MbZ-3C-gxe"/>

@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var perPersonAmountLabel: UILabel!
     @IBOutlet weak var splitLabel: UILabel!
     @IBOutlet weak var customTipLabel: UILabel!
+    @IBOutlet weak var billSummaryLabel: UILabel!
+    @IBOutlet weak var tipSummaryLabel: UILabel!
     @IBOutlet weak var summaryTotalLabel: UILabel!
     
     @IBOutlet weak var billLabelView: UIView!
@@ -61,6 +63,16 @@ class ViewController: UIViewController {
         setLocalCurrency()
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        let statusBar = UIView(frame: CGRect(x: 0.0, y: 0.0, width: UIScreen.main.bounds.size.width, height: 20.0))
+        statusBar.backgroundColor = customColors.lightBlue()
+        view.addSubview(statusBar)
+    }
     override func viewDidAppear(_ animated: Bool) {
         drawBorders()
         activeLabel = billAmountLabel
@@ -86,14 +98,23 @@ class ViewController: UIViewController {
     }
 
     @IBAction func calculateTip(_ sender: UIButton) {
-        let tipPercentageDefaults = [0.18, 0.2, 0.25]
-        tipPercentage = tipPercentageDefaults[sender.tag]
+        let tipPercentageDefaults = [0.15, 0.18, 0.2]
+        let newTipPercentage = tipPercentageDefaults[sender.tag]
         isFirstTimeTyping = true
         defaultVal = 0
         resetButtonStyling()
         resetHighlightLeadingContraint(selectedConstraint: tipHighlightConstraint)
         activeLabel = customTipLabel
         moveConstraintRight(selectedConstraint: tipHighlightConstraint)
+        
+        if (tipPercentage == newTipPercentage) {
+            tipPercentage = 0
+            customTipLabel.text = "+"
+            calculate()
+            return
+        }
+        
+        tipPercentage = newTipPercentage
         resetLabelView(selectedLabelView: tipLabelView)
         moveLabelViewRight(selectedLabelView: tipLabelView)
         sender.backgroundColor = customColors.salmon()
@@ -124,7 +145,9 @@ class ViewController: UIViewController {
         total = bill + tip
         let perPersonTotal = (total)/numOfWays
         
-        summaryTotalLabel.text = String(format: "%.2f", total)
+        billSummaryLabel.text = String(format: "\(localCurrencySymbol)%.2f", bill)
+        tipSummaryLabel.text = String(format: "\(localCurrencySymbol)%.2f", tip)
+        summaryTotalLabel.text = String(format: "\(localCurrencySymbol)%.2f", total)
         perPersonAmountLabel.text = String(format: "\(localCurrencySymbol)%.2f", perPersonTotal)
     }
     
@@ -343,7 +366,7 @@ class ViewController: UIViewController {
     }
     
     func animateConstraint() {
-        UIView.animate(withDuration: 0.5) {
+        UIView.animate(withDuration: 0.2) {
             self.view.layoutIfNeeded()
         }
     }
@@ -352,7 +375,7 @@ class ViewController: UIViewController {
         if selectedLabelView == activeLabelView {
             return
         }
-        UILabel.animate(withDuration: 0.5, animations: {
+        UILabel.animate(withDuration: 0.2, animations: {
             selectedLabelView.center.x += 10
         })
         activeLabelView = selectedLabelView
@@ -366,7 +389,7 @@ class ViewController: UIViewController {
     }
     
     func moveLabelViewLeft(selectedLabelView: UIView) {
-        UIView.animate(withDuration: 0.5, animations: {
+        UIView.animate(withDuration: 0.2, animations: {
             selectedLabelView.center.x -= 10
         })
     }
