@@ -103,9 +103,6 @@ class ViewController: UIViewController {
         isFirstTimeTyping = true
         defaultVal = 0
         resetButtonStyling()
-        resetHighlightLeadingContraint(selectedConstraint: tipHighlightConstraint)
-        activeLabel = customTipLabel
-        moveConstraintRight(selectedConstraint: tipHighlightConstraint)
         
         if (tipPercentage == newTipPercentage) {
             tipPercentage = 0
@@ -114,6 +111,9 @@ class ViewController: UIViewController {
             return
         }
         
+        activeLabel = customTipLabel
+        resetHighlightLeadingContraint(selectedConstraint: tipHighlightConstraint)
+        moveConstraintRight(selectedConstraint: tipHighlightConstraint)
         tipPercentage = newTipPercentage
         resetLabelView(selectedLabelView: tipLabelView)
         moveLabelViewRight(selectedLabelView: tipLabelView)
@@ -187,16 +187,28 @@ class ViewController: UIViewController {
     
     func didSelectTipView() {
         decimalButton.isEnabled = false
-        activeLabel = customTipLabel
+
+        if (customTipLabel.backgroundColor == customColors.salmon()) {
+            tipPercentage = 0
+            resetButtonStyling()
+            customTipLabel.text = "+"
+            calculate()
+            return
+        }
+        
+        if let customTip = customTipLabel.text {
+            if customTip == "+" {
+                tipPercentage = 0
+            } else {
+                tipPercentage = Double(customTip)!/100.00
+            }
+            calculate()
+        }
+        
         resetButtonStyling()
+        activeLabel = customTipLabel
         activeLabel.backgroundColor = customColors.salmon()
         activeLabel.textColor = UIColor.white
-        if let customTip = customTipLabel.text {
-            if customTip != "+" {
-                tipPercentage = Double(customTip)!/100.00
-                calculate()
-            }
-        }
         resetHighlightLeadingContraint(selectedConstraint: tipHighlightConstraint)
         moveConstraintRight(selectedConstraint: tipHighlightConstraint)
         resetLabelView(selectedLabelView: tipLabelView)
