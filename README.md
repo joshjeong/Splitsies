@@ -8,9 +8,10 @@ Time spent: 15 hours spent in total
 
 ## User Stories
 
-* Custom keypad
-* Choose from a tip preset or enter a custom tip
-* Split bill amongst a number of people
+The following **required** functionality is complete:
+
+* [X] User can enter a bill amount, choose a tip percentage, and see the tip and total values.
+* [X] Settings page to change the default tip percentage.
 
 The following **optional** features are implemented:
 * [x] UI animations
@@ -19,12 +20,16 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
+* Custom keypad
+* Custom tip field
+* Split bill amongst a number of people
 * Click the top right icon to generate a text message with total per person
+* Settings modal
 
 <img src="./screenshots/text_message.jpg" alt="text message" width="250px"/>
 
 
-## Video Walkthrough 
+## Video Walkthrough
 
 Here's a walkthrough of implemented user stories:
 
