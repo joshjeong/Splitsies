@@ -41,6 +41,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var splitHighlightConstraint: NSLayoutConstraint!
     @IBOutlet weak var billHighlightConstraint: NSLayoutConstraint!
     
+    @IBOutlet weak var modalView: UIView!
+    @IBOutlet weak var modalTopConstraint: NSLayoutConstraint!
+    @IBOutlet weak var modalTipLabel: UILabel!
+    
+    
     var activeLabel: UILabel!
     var activeConstraint: NSLayoutConstraint?
     var activeLabelView: UIView?
@@ -53,7 +58,12 @@ class ViewController: UIViewController {
     
     let messenger = Messenger()
     let customColors = CustomColors()
+    let userDefaults = UserDefaults.standard
     
+    // Modal
+    @IBOutlet weak var defaultTipSlider: UISlider!
+    let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.dark)
+    var blurEffectView: UIVisualEffectView? = nil
 
     
     override func viewDidLoad() {
@@ -61,6 +71,7 @@ class ViewController: UIViewController {
         bindTapGestures()
         styleNavBar()
         setLocalCurrency()
+        styleModal()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -78,6 +89,14 @@ class ViewController: UIViewController {
         activeLabel = billAmountLabel
         activeLabelView = billLabelView
         activeConstraint = billHighlightConstraint
+        
+        let defaultCustomTip = userDefaults.value(forKey: "defaultCustomTip") as? String
+        
+        if defaultCustomTip != nil {
+            if let tip = defaultCustomTip {
+                customTipLabel.text = tip
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -120,6 +139,38 @@ class ViewController: UIViewController {
         sender.backgroundColor = customColors.salmon()
         sender.setTitleColor(UIColor.white, for: .normal)
         calculate()
+    }
+    
+    func styleModal() {
+        modalView.layer.cornerRadius = 10
+        modalView.layer.shadowColor = UIColor.gray.cgColor
+        modalView.layer.shadowOpacity = 1
+        modalView.layer.shadowOffset = CGSize.zero
+        modalView.layer.shadowRadius = 7
+        modalTopConstraint.constant = 800
+    }
+    
+    @IBAction func showModal(_ sender: UIButton) {
+        let defaultCustomTip = userDefaults.value(forKey: "defaultCustomTip") as? String
+    
+        if defaultCustomTip != nil {
+            if let tip = defaultCustomTip {
+                modalTipLabel.text = tip
+                defaultTipSlider.value = Float(tip)!/100
+            }
+        }
+    
+        blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView?.frame = self.view.bounds
+        blurEffectView?.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        self.view.insertSubview(blurEffectView!, at: 7)
+
+        modalTopConstraint.constant = 163
+        
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     func resetButtonStyling() {
@@ -325,6 +376,8 @@ class ViewController: UIViewController {
         }
     }
     
+
+    
     func presentAlertController(title: String, message: String) {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default)
@@ -405,4 +458,45 @@ class ViewController: UIViewController {
             selectedLabelView.center.x -= 10
         })
     }
+    
+    @IBAction func sliderValueChanged(_ sender: UISlider) {
+        let tipPercentage = Int(sender.value*100)
+        modalTipLabel.text = "\(tipPercentage)"
+    }
+    
+    @IBAction func tapSaveButton(_ sender: UIButton) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.setValue(modalTipLabel.text, forKey: "defaultCustomTip")
+        userDefaults.synchronize()
+        closeModal()
+        
+        if let tip = modalTipLabel.text {
+            tipPercentage = Double(tip)!/100
+            resetButtonStyling()
+            customTipLabel.backgroundColor = customColors.salmon()
+            customTipLabel.textColor = UIColor.white
+            customTipLabel.text = tip
+            calculate()
+        }
+    }
+    
+    
+    @IBAction func tapCancelButton(_ sender: UIButton) {
+        closeModal()
+    }
+    
+    func closeModal() {
+        
+        if let modalOverlay = blurEffectView {
+            modalOverlay.removeFromSuperview()
+        }
+        
+        modalTopConstraint.constant = 800
+        
+        
+        UIView.animate(withDuration: 0.5, animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+
 }
